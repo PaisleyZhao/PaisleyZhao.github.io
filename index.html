@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>赵珮伊 Peiyi Zhao</title>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist@latest/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/css/geist-mono@latest/index.css">
+<style>
+  /* ============================================================
+     Design language: cali.so v3
+     暖纸张 · 灰度分级 · 唯一焦橙 signal · mono 印刷标签 · 发丝边框
+     ============================================================ */
+  :root {
+    --paper:    oklch(0.982 0.004 95);
+    --surface:  oklch(0.965 0.005 95);
+    --ink:      oklch(0.28 0.012 95);
+    --body:     oklch(0.40 0.012 95);
+    --muted:    oklch(0.54 0.010 95);
+    --faint:    oklch(0.66 0.008 95);
+    --hairline: oklch(0.28 0.012 95 / 0.10);
+    --hairline-strong: oklch(0.28 0.012 95 / 0.22);
+    --signal:   oklch(0.62 0.17 45);
+    --shadow-small:  0 5px 10px rgb(0 0 0 / 0.05);
+    --shadow-medium: 0 8px 30px rgb(0 0 0 / 0.08);
+    --shadow-large:  0 30px 60px rgb(0 0 0 / 0.12);
+    --ease-swift: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "PingFang SC", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, "PingFang SC", monospace;
+    /* 木架：浅色橡木 / 深色胡桃木 */
+    --oak-top:    linear-gradient(180deg, #d8bc92, #c7a87b);
+    --oak-front:  linear-gradient(180deg, #b8946a, #a5825a);
+    --oak-grain:  rgba(120, 88, 52, 0.16);
+  }
+  [data-theme="dark"] {
+    --paper:    oklch(0.215 0.008 95);
+    --surface:  oklch(0.255 0.010 95);
+    --ink:      oklch(0.93 0.005 95);
+    --body:     oklch(0.79 0.008 95);
+    --muted:    oklch(0.66 0.008 95);
+    --faint:    oklch(0.52 0.008 95);
+    --hairline: oklch(0.93 0.005 95 / 0.12);
+    --hairline-strong: oklch(0.93 0.005 95 / 0.25);
+    --signal:   oklch(0.70 0.17 48);
+    --shadow-small:  0 5px 10px rgb(0 0 0 / 0.3);
+    --shadow-medium: 0 8px 30px rgb(0 0 0 / 0.35);
+    --shadow-large:  0 30px 60px rgb(0 0 0 / 0.45);
+    --oak-top:    linear-gradient(180deg, #6d523c, #5c4432);
+    --oak-front:  linear-gradient(180deg, #4a382b, #3d2e23);
+    --oak-grain:  rgba(30, 20, 12, 0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html.no-transitions, html.no-transitions * { transition: none !important; animation: none !important; }
+  body {
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--body);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    transition: background 150ms ease, color 150ms ease;
+  }
+  ::selection { background: oklch(0.85 0.09 100 / 0.55); color: inherit; }
+
+  /* ---------- 顶部导航 ---------- */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 var(--hairline);
+  }
+  .topbar-inner {
+    max-width: 1020px; margin: 0 auto;
+    display: flex; align-items: center; gap: 20px;
+    padding: 0 32px;
+    height: 52px;
+  }
+  .wordmark {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
+    color: var(--ink); text-decoration: none;
+    display: flex; align-items: baseline; gap: 8px;
+    white-space: nowrap;
+  }
+  .wordmark:hover { text-decoration: none; }
+  .wordmark .zh { font-family: var(--sans); font-weight: 600; font-size: 13.5px; }
+
+  .tabs {
+    display: flex; gap: 2px; margin-left: auto;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs a {
+    font-size: 13px; color: var(--muted);
+    text-decoration: none; white-space: nowrap;
+    padding: 5px 12px; border-radius: 999px;
+    transition: color 150ms ease, background 150ms ease;
+  }
+  .tabs a .en {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--faint); margin-left: 5px;
+    transition: color 150ms ease;
+  }
+  .tabs a:hover { color: var(--ink); text-decoration: none; }
+  .tabs a.active { color: var(--ink); background: var(--surface); box-shadow: 0 0 0 1px var(--hairline); }
+  .tabs a.active .en { color: var(--muted); }
+
+  .theme-btn {
+    appearance: none; border: 0; background: transparent; cursor: pointer;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    border-radius: 999px; padding: 5px 10px; flex-shrink: 0;
+    transition: color 150ms ease, background 150ms ease;
+  }
+  .theme-btn:hover { color: var(--ink); background: var(--surface); }
+  .theme-btn:focus-visible { outline: 1px solid var(--hairline-strong); outline-offset: 2px; }
+
+  .layout {
+    max-width: 1020px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 264px minmax(0, 37.5rem);
+    gap: 64px;
+    padding: 56px 32px 96px;
+    justify-content: center;
+  }
+
+  /* ---------- 入场 develop（blur → sharp）---------- */
+  .js .develop { opacity: 0; filter: blur(4px); }
+  .js .develop.in {
+    opacity: 1; filter: none;
+    animation: develop 350ms var(--ease-swift) backwards;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes develop {
+    from { opacity: 0; filter: blur(4px); }
+    to   { opacity: 1; filter: blur(0); }
+  }
+
+  /* ---------- 页面切换 ---------- */
+  .page { display: none; }
+  .page.current { display: block; }
+  .page.current.enter { animation: page-in 300ms var(--ease-swift) backwards; }
+  @keyframes page-in {
+    from { opacity: 0; filter: blur(2px); }
+    to   { opacity: 1; filter: blur(0); }
+  }
+
+  /* ---------- 侧栏（全板块常驻）---------- */
+  .sidebar { position: sticky; top: 92px; align-self: start; }
+  .sidebar h1 {
+    font-size: 20px; font-weight: 600; letter-spacing: 0.01em;
+    color: var(--ink); line-height: 1.35;
+  }
+  .sidebar .en-name {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em;
+    color: var(--muted); margin: 4px 0 16px;
+  }
+  .sidebar .affil { font-size: 13px; color: var(--muted); line-height: 1.9; margin-bottom: 22px; }
+
+  .keywords { margin-bottom: 24px; }
+  .keywords span {
+    display: inline-block;
+    box-shadow: 0 0 0 1px var(--hairline);
+    color: var(--body);
+    border-radius: 3px;
+    padding: 1px 8px;
+    font-size: 12px;
+    margin: 0 6px 7px 0;
+    transition: box-shadow 150ms ease;
+  }
+  .keywords span:hover { box-shadow: 0 0 0 1px var(--hairline-strong); }
+
+  .contact { font-size: 13px; }
+  .contact .row { margin-bottom: 12px; }
+  .contact .k {
+    display: block;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 1px;
+  }
+  .contact .v { color: var(--body); overflow-wrap: anywhere; }
+
+  a {
+    color: var(--ink);
+    text-decoration: underline dotted;
+    text-decoration-color: color-mix(in srgb, currentColor 38%, transparent);
+    text-underline-offset: 3px;
+    transition: color 150ms ease, text-decoration-color 150ms ease;
+  }
+  a:hover { color: var(--ink); text-decoration-color: var(--ink); }
+
+  /* ---------- section tag ---------- */
+  .section-tag {
+    display: flex; align-items: center; gap: 8px;
+    margin-bottom: 22px;
+    user-select: none;
+  }
+  .section-tag .num {
+    font-family: var(--mono); font-size: 11px; font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    box-shadow: 0 0 0 1px var(--hairline);
+    border-radius: 2px;
+    padding: 1px 5px;
+  }
+  .section-tag .hatch { display: none;
+    width: 14px; height: 14px; border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--hairline);
+    background: repeating-linear-gradient(-45deg, transparent 0 2px, var(--hairline) 2px 3px);
+  }
+  .section-tag .label {
+    font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: 0.02em;
+  }
+  .section-tag .en {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--faint);
+  }
+  .section-tag .rule { flex: 1; height: 1px; background: var(--hairline); transform: scaleY(0.5); }
+
+  section.blk { margin-bottom: 56px; }
+  .lead { font-size: 14.5px; color: var(--ink); }
+  .lead strong { color: var(--ink); font-weight: 600; }
+  .body-text { margin-top: 12px; }
+  .body-text + .body-text { margin-top: 10px; }
+
+  /* ---------- About hero：自我介绍 + 头像（cali 首页构图）---------- */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 176px;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 56px;
+  }
+  .portrait {
+    width: 176px; height: 176px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px var(--hairline), var(--shadow-small);
+    background: var(--surface);
+    color: var(--faint);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 44px; font-weight: 500;
+    /* 替换照片：background: url('photo.jpg') center/cover; 删除文字“珮” */
+  }
+
+  /* ---------- 经历 timeline（cali 01 经历 版式）---------- */
+  .tl { list-style: none; }
+  .tl li {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+    padding: 13px 2px;
+    box-shadow: 0 1px 0 var(--hairline);
+    transition: opacity 180ms var(--ease-swift);
+  }
+  .tl li:last-child { box-shadow: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .tl:hover > li:not(:hover) { opacity: 0.44; }
+  }
+  .tl .org { font-weight: 600; color: var(--ink); font-size: 14px; }
+  .tl .role { display: block; font-size: 12.5px; color: var(--muted); font-weight: 400; margin-top: 1px; }
+  .tl .when {
+    font-family: var(--mono); font-size: 12px; font-variant-numeric: tabular-nums;
+    color: var(--muted); white-space: nowrap; flex-shrink: 0;
+  }
+
+  /* ---------- 卡片 / 列表 / 徽章（学术、实践板块用）---------- */
+  .dir-card {
+    box-shadow: 0 0 0 1px var(--hairline);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    background: var(--paper);
+    transition: box-shadow 150ms ease;
+  }
+  .dir-card:hover { box-shadow: 0 0 0 1px var(--hairline-strong), var(--shadow-small); }
+  .dir-card h3 { font-size: 14.5px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+  .dir-card h3 .idx { font-family: var(--mono); font-size: 11.5px; color: var(--faint); font-weight: 400; margin-right: 8px; }
+  .dir-card p { font-size: 13.5px; }
+  .dir-card .ev { font-size: 12.5px; color: var(--muted); margin-top: 7px; }
+
+  ul.items { list-style: none; }
+  ul.items li {
+    padding: 12px 2px;
+    box-shadow: 0 1px 0 var(--hairline);
+    font-size: 14.5px;
+    transition: opacity 180ms var(--ease-swift);
+  }
+  ul.items li:last-child { box-shadow: none; }
+  @media (hover: hover) and (pointer: fine) {
+    ul.items:hover > li:not(:hover) { opacity: 0.44; }
+    .news:hover > li:not(:hover) { opacity: 0.44; }
+  }
+  ul.items strong { color: var(--ink); font-weight: 500; }
+
+  /* 实习条目 logo：cali.so /projects 的 36px 图标制式 */
+  ul.items li.exp { display: flex; gap: 14px; align-items: flex-start; }
+  ul.items li.exp .exp-logo {
+    width: 36px; height: 36px; flex-shrink: 0; margin-top: 1px;
+    border-radius: 8px; background: #fff;
+    box-shadow: 0 0 0 1px var(--hairline);
+    object-fit: contain; padding: 3px;
+  }
+  ul.items li.exp .exp-body { flex: 1; min-width: 0; }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.04em;
+    box-shadow: 0 0 0 1px var(--hairline-strong);
+    color: var(--body);
+    border-radius: 2px;
+    padding: 0 5px;
+    margin-right: 8px;
+    vertical-align: 1px;
+    white-space: nowrap;
+  }
+  .badge.gray { box-shadow: 0 0 0 1px var(--hairline); color: var(--muted); }
+  .venue { color: var(--muted); font-size: 12.5px; }
+
+  .highlight {
+    position: relative;
+    background: var(--surface);
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px var(--hairline);
+    padding: 18px 22px 18px 26px;
+    font-size: 13.5px;
+  }
+  .highlight::before {
+    content: "";
+    position: absolute; left: 10px; top: 14px; bottom: 14px;
+    width: 5px; border-radius: 1px;
+    box-shadow: 0 0 0 1px var(--hairline);
+    background: repeating-linear-gradient(-45deg, transparent 0 2px, var(--hairline) 2px 3px);
+  }
+  .highlight h3 { font-size: 14px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+  .highlight h3 .badge { vertical-align: 1px; }
+
+  .news { list-style: none; }
+  .news li { font-size: 13.5px; padding: 7px 2px; box-shadow: 0 1px 0 var(--hairline); transition: opacity 180ms var(--ease-swift); }
+  .news li:last-child { box-shadow: none; }
+  .news .date {
+    font-family: var(--mono); font-size: 12px;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+    margin-right: 12px;
+  }
+
+  /* ============================================================
+     木架共享：橡木板（6px 顶面 + 12px 前面 + 纹理 + 墙影）
+     ============================================================ */
+  .shelf-box { position: relative; margin-top: 8px; }
+  .plank {
+    position: absolute; left: -14px; right: -14px; bottom: 0; height: 18px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .plank .p-top {
+    height: 6px;
+    background: var(--oak-top);
+    border-radius: 1px 1px 0 0;
+  }
+  .plank .p-front {
+    height: 12px;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 23px, var(--oak-grain) 23px 24px, transparent 24px 61px, var(--oak-grain) 61px 62px),
+      var(--oak-front);
+    border-radius: 0 0 2px 2px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 0.18), 0 3px 6px rgb(0 0 0 / 0.10);
+  }
+  .shelf-hint {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+    color: var(--faint);
+    text-align: center;
+    margin: -6px 0 4px;
+    user-select: none;
+  }
+  .live-count {
+    font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .shelf-hint.sub { margin: 2px 0 14px; font-size: 10px; }
+  .shelf-note {
+    text-align: center;
+    margin-top: 26px;
+    font-size: 12.5px;
+    color: var(--muted);
+    min-height: 1.6em;
+  }
+  .shelf-note .ext { font-family: var(--mono); font-size: 11px; }
+  .shelf-review {
+    max-width: 27rem;
+    margin: 8px auto 0;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: var(--muted);
+    text-align: center;
+    min-height: 2.2em;
+    transition: opacity 200ms var(--ease-swift);
+  }
+
+  /* ============================================================
+     循环播放中：黑胶纸套架（复刻 cali.so vinyl-shelf）
+     中间选中放大正对，两侧纸套 3D 内扣，距离越远越侧
+     ============================================================ */
+  .vinyl-stage {
+    position: relative;
+    height: 216px;
+    margin: 0 -32px;               /* 突破内容列，两侧出血后被裁 */
+    overflow: hidden;
+    perspective: 1400px;
+    touch-action: pan-y;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .vinyl-stage.dragging { cursor: grabbing; }
+  .sleeve {
+    position: absolute;
+    left: 50%; bottom: 18px;
+    width: 152px; height: 152px;
+    transform-style: preserve-3d;
+    transition: transform 480ms var(--ease-spring);
+    will-change: transform;
+  }
+  .vinyl-stage.dragging .sleeve { transition: none; }
+  .sleeve .face {
+    position: absolute; inset: 0;
+    background-color: var(--surface);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.18);
+    border-radius: 1px;
+  }
+  /* 纸套侧边（书脊）：封面切片 + 竖排小字 */
+  .sleeve .spine-l, .sleeve .spine-r {
+    position: absolute; top: 0; bottom: 0;
+    width: 8px;
+    background-color: var(--surface);
+    background-size: 152px 152px;
+    box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2);
+    overflow: hidden;
+  }
+  .sleeve .spine-l { left: -4px; transform: rotateY(90deg); }
+  .sleeve .spine-r { right: -4px; transform: rotateY(90deg); }
+  .sleeve .spine-l span, .sleeve .spine-r span {
+    position: absolute; left: 50%; top: 6px;
+    transform: translateX(-50%);
+    writing-mode: vertical-rl;
+    font-family: var(--mono); font-size: 5px; letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.85);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+  }
+  /* 接触影 */
+  .sleeve-sh {
+    position: absolute;
+    left: 50%; bottom: 16px;
+    width: 120px; height: 8px;
+    background: radial-gradient(ellipse at center, rgb(0 0 0 / 0.28), transparent 70%);
+    transform: translateX(-50%);
+    pointer-events: none;
+    transition: transform 480ms var(--ease-spring), opacity 480ms var(--ease-swift);
+  }
+  .vinyl-stage.dragging .sleeve-sh { transition: none; }
+
+  /* ============================================================
+     珍藏架（复刻 cali.so bookshelf）：
+     一本完全展开，其余挤成书脊，书脊=封面切片+竖排书名
+     ============================================================ */
+  .books-stage {
+    position: relative;
+    z-index: 2;
+    display: flex; align-items: flex-end; justify-content: center;
+    gap: 3px;
+    height: 232px;
+    padding-bottom: 18px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .books-stage::-webkit-scrollbar { display: none; }
+  .book {
+    position: relative;
+    flex-shrink: 0;
+    width: 34px; height: 210px;
+    background-color: var(--surface);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.15), inset -10px 0 14px rgb(0 0 0 / 0.3), inset 3px 0 4px rgb(255 255 255 / 0.12);
+    border-radius: 1px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 380ms var(--ease-swift);
+  }
+  .book::after {                     /* 书脊压暗，书名可读 */
+    content: "";
+    position: absolute; inset: 0;
+    background: rgb(0 0 0 / 0.42);
+    transition: opacity 250ms ease;
+  }
+  .book .spine-title {
+    position: absolute; left: 50%; top: 10px;
+    transform: translateX(-50%);
+    writing-mode: vertical-rl;
+    font-size: 10.5px; letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+    white-space: nowrap;
+    z-index: 2;
+  }
+  .book.open {
+    width: 148px;                   /* 210 * (2:3) 海报比例 */
+    cursor: default;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.18), var(--shadow-small);
+  }
+  .book.open::after { opacity: 0; }
+  .book.open .spine-title { display: none; }
+
+  /* ============================================================
+     舞台现场：票根墙（ticket stubs）
+     纸票 + 撕票线 + 副券 + 装饰条码；不上架、无外链
+     ============================================================ */
+  .stubs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    list-style: none;
+  }
+  .stub {
+    position: relative;
+    display: flex;
+    background: oklch(0.988 0.003 95);          /* 票纸：比页面亮半阶 */
+    color: oklch(0.38 0.012 95);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--hairline), var(--shadow-small);
+    cursor: default;
+    overflow: hidden;
+    transition: transform 300ms var(--ease-spring), box-shadow 300ms var(--ease-swift);
+  }
+  .stub:nth-child(3n+1) { transform: rotate(-0.7deg); }
+  .stub:nth-child(3n+2) { transform: rotate(0.5deg); }
+  .stub:nth-child(3n)   { transform: rotate(-0.3deg); }
+  .stub:hover, .stub.selected {
+    transform: rotate(0deg) translateY(-3px);
+    box-shadow: 0 0 0 1px var(--hairline-strong), var(--shadow-medium);
+    z-index: 2;
+  }
+  .stub-main {
+    flex: 1;
+    padding: 10px 12px 9px;
+    min-width: 0;
+  }
+  .stub-no {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+    color: oklch(0.62 0.010 95);
+    display: flex; justify-content: space-between;
+  }
+  .stub-type {
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.1em;
+    color: oklch(0.52 0.012 95);
+    box-shadow: 0 0 0 1px oklch(0.28 0.012 95 / 0.25);
+    border-radius: 2px;
+    padding: 0 4px;
+  }
+  .stub-title {
+    font-size: 13px; font-weight: 600; color: oklch(0.28 0.012 95);
+    line-height: 1.45; margin-top: 3px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .stub-meta {
+    font-family: var(--mono); font-size: 9.5px; font-variant-numeric: tabular-nums;
+    color: oklch(0.55 0.010 95);
+    margin-top: 4px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  /* 撕票线 + 上下缺口 */
+  .stub-stub {
+    flex-shrink: 0;
+    width: 30px;
+    border-left: 1.5px dashed oklch(0.28 0.012 95 / 0.25);
+    display: flex; align-items: center; justify-content: center;
+    background:
+      radial-gradient(circle 5px at -1.5px 0, var(--paper) 98%, transparent),
+      radial-gradient(circle 5px at -1.5px 100%, var(--paper) 98%, transparent);
+  }
+  .stub-stub span {
+    writing-mode: vertical-rl;
+    font-family: var(--mono); font-size: 8.5px; letter-spacing: 2px;
+    color: oklch(0.62 0.010 95);
+  }
+  /* 装饰条码：宽度由标题字符确定性生成，纯装饰 */
+  .stub-barcode {
+    display: flex; align-items: flex-end; gap: 1px;
+    height: 14px; margin-top: 7px;
+  }
+  .stub-barcode i { background: oklch(0.35 0.012 95); height: 100%; }
+  /* 票根入场：像票被撒在桌上 */
+  .js .stubs.pop .stub {
+    animation: pop 350ms var(--ease-swift) backwards;
+    animation-delay: calc(var(--i, 0) * 45ms);
+  }
+  @media (max-width: 560px) {
+    .stubs { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* pixel cluster：全站唯一 signal 印章 */
+  .pixel-cluster {
+    display: inline-grid;
+    grid-template-columns: repeat(2, 5px);
+    grid-auto-rows: 5px;
+    gap: 1px;
+    margin-left: 2px;
+  }
+  .pixel-cluster i { width: 5px; height: 5px; background: var(--faint); }
+  .pixel-cluster i.lit { background: var(--signal); }
+  .pixel-cluster i.dim { background: var(--hairline-strong); }
+  .pixel-cluster i.empty { background: transparent; }
+
+  /* 填写提示占位 */
+  .todo-note {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
+    color: var(--faint);
+    box-shadow: 0 0 0 1px var(--hairline);
+    border-radius: 4px;
+    padding: 10px 14px;
+    margin-bottom: 18px;
+  }
+
+  /* ---------- 人生瞬间：拍立得 ---------- */
+  .polaroids {
+    display: block;
+    columns: 3;
+    column-gap: 18px;
+  }
+  .polaroid {
+    background: oklch(0.995 0.002 95);
+    border-radius: 2px;
+    box-shadow: 0 0 0 1px var(--hairline), var(--shadow-small);
+    padding: 8px 8px 10px;
+    margin-bottom: 22px;
+    break-inside: avoid;
+    transition: transform 300ms var(--ease-spring), box-shadow 300ms var(--ease-swift);
+  }
+  [data-theme="dark"] .polaroid { background: oklch(0.92 0.005 95); }
+  [data-theme="dark"] .polaroid .ph-cap { color: oklch(0.30 0.012 95); }
+  [data-theme="dark"] .polaroid .ph-date { color: oklch(0.42 0.012 95); }
+  .polaroid:nth-child(3n+1) { transform: rotate(-1.2deg); }
+  .polaroid:nth-child(3n+2) { transform: rotate(0.8deg); }
+  .polaroid:nth-child(3n)   { transform: rotate(-0.5deg); }
+  @media (hover: hover) and (pointer: fine) {
+    .polaroid:hover {
+      transform: rotate(0deg) translateY(-4px) scale(1.02);
+      box-shadow: 0 0 0 1px var(--hairline), var(--shadow-medium);
+      z-index: 2; position: relative;
+    }
+  }
+  .polaroid .ph {
+    box-shadow: inset 0 0 0 1px var(--hairline);
+    /* 原始比例照片：<img src="moments/xxx.jpg">，不裁剪 */
+  }
+  .polaroid .ph img { width: 100%; display: block; }
+  .polaroid .ph span {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+    color: var(--faint);
+  }
+  .polaroid .ph-cap { font-size: 12.5px; color: oklch(0.36 0.012 95); margin-top: 8px; line-height: 1.55; }
+  .polaroid .ph-date {
+    font-family: var(--mono); font-size: 10.5px; font-variant-numeric: tabular-nums;
+    color: oklch(0.60 0.010 95);
+    margin-top: 2px;
+  }
+  .js .polaroids.pop .polaroid {
+    animation: pop 350ms var(--ease-swift) backwards;
+    animation-delay: calc(var(--i, 0) * 65ms);
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: rotate(1.5deg) scale(0.85); }
+  }
+  @media (max-width: 560px) {
+    .polaroids { columns: 2; }
+  }
+
+  footer {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 28px 32px 64px;
+    color: var(--faint);
+    font-size: 12px;
+  }
+  footer .colophon {
+    box-shadow: 0 -1px 0 var(--hairline);
+    padding-top: 20px;
+    display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  footer .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+
+  /* ---------- 文案编辑模式 ---------- */
+  body.editing [data-copy] {
+    outline: 1px dashed var(--hairline-strong);
+    outline-offset: 3px;
+    border-radius: 2px;
+    cursor: text;
+    transition: outline-color 150ms ease;
+  }
+  body.editing [data-copy]:hover { outline-color: var(--ink); }
+  body.editing [data-copy]:focus { outline: 1px solid var(--ink); }
+  .editbar {
+    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+    z-index: 300;
+    display: none;
+    align-items: center; gap: 10px;
+    background: var(--paper);
+    box-shadow: 0 0 0 1px var(--hairline), var(--shadow-medium);
+    border-radius: 999px;
+    padding: 6px 8px 6px 14px;
+    font-family: var(--mono); font-size: 11px; color: var(--muted);
+    white-space: nowrap;
+  }
+  body.editing .editbar { display: flex; }
+  .editbar .dirty { color: var(--signal); }   /* 编辑条上允许的一点点 signal */
+  .editbar button {
+    appearance: none; border: 0; cursor: pointer;
+    font-family: var(--mono); font-size: 11px;
+    border-radius: 999px; padding: 5px 12px;
+    background: var(--ink); color: var(--paper);
+  }
+  .editbar button.ghost { background: transparent; color: var(--muted); box-shadow: 0 0 0 1px var(--hairline-strong); }
+  .editbar button.ghost:hover { color: var(--ink); }
+
+  @media (max-width: 820px) {
+    .topbar-inner { padding: 0 16px; gap: 10px; }
+    .wordmark .en-wm { display: none; }
+    .layout { grid-template-columns: minmax(0, 1fr); gap: 44px; padding: 40px 22px 80px; }
+    .sidebar { position: static; }
+    .hero { grid-template-columns: 1fr 132px; gap: 24px; }
+    .portrait { width: 132px; height: 132px; font-size: 34px; }
+    .vinyl-stage { margin: 0 -22px; }
+    .plank { left: -8px; right: -8px; }
+    footer { padding: 24px 22px 56px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
+    .js .develop { opacity: 1; filter: none; }
+  }
+
+  /* ---------- 人生清单（做过的一些事）---------- */
+  .icon-links { display: flex; gap: 12px; align-items: center; }
+  .icon-links a { color: var(--muted); text-decoration: none; display: inline-flex; }
+  .icon-links a:hover { color: var(--ink); }
+
+  .bucket-head {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--faint); margin-top: 18px; margin-bottom: 2px;
+  }
+  .bucket { list-style: none; }
+  .bucket li {
+    display: flex; gap: 10px; align-items: baseline;
+    padding: 8px 2px;
+    box-shadow: 0 1px 0 var(--hairline);
+    font-size: 13.5px;
+    transition: opacity 180ms var(--ease-swift);
+  }
+  .bucket li:last-child { box-shadow: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .bucket:hover > li:not(:hover) { opacity: 0.44; }
+  }
+  .bucket .tick { font-family: var(--mono); font-size: 12px; color: var(--signal); flex-shrink: 0; }
+
+  /* ---------- 撕标签（关于我） ---------- */
+  .tear-tag {
+    appearance: none; border: 0; cursor: pointer;
+    display: inline-block;
+    background: var(--surface);
+    box-shadow: 0 0 0 1px var(--hairline);
+    color: var(--body);
+    border-radius: 3px;
+    padding: 1px 8px;
+    font: inherit; font-size: 12px;
+    margin: 0 4px 4px 0;
+    transition: transform 300ms var(--ease-spring), opacity 300ms ease, box-shadow 150ms ease;
+  }
+  .tear-tag:hover { box-shadow: 0 0 0 1px var(--hairline-strong); transform: rotate(-2deg); }
+  .tear-tag.torn { opacity: 0; transform: rotate(9deg) translateY(18px) scale(0.9); pointer-events: none; }
+  .tear-reset {
+    appearance: none; border: 0; cursor: pointer; background: transparent;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em;
+    color: var(--faint); text-decoration: underline dotted; text-underline-offset: 3px;
+    padding: 0; margin-left: 6px; display: none;
+  }
+  .tear-reset.show { display: inline; }
+  .tear-reset:hover { color: var(--ink); }
+
+  /* ---------- 荣誉（单行列表，emoji 在行首） ---------- */
+  .hn-list { list-style: none; }
+  .hn-list .hn {
+    display: flex; align-items: baseline; gap: 12px;
+    padding: 11px 2px;
+    box-shadow: 0 1px 0 var(--hairline);
+    transition: opacity 180ms var(--ease-swift);
+  }
+  .hn-list .hn:last-child { box-shadow: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .hn-list:hover > .hn:not(:hover) { opacity: 0.44; }
+  }
+  .hn-t { font-size: 13.5px; font-weight: 600; color: var(--ink); display: flex; align-items: baseline; gap: 9px; }
+  .hn-e { font-size: 13px; flex-shrink: 0; }
+  .hn-y {
+    margin-left: auto; flex-shrink: 0;
+    font-family: var(--mono); font-size: 11.5px; color: var(--faint);
+    font-variant-numeric: tabular-nums; white-space: nowrap;
+  }
+
+  /* ---------- 项目卡片（step 风：封面 + 标题 + 箭头） ---------- */
+  .proj-grid {
+    list-style: none;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 18px;
+  }
+  @media (max-width: 560px) { .proj-grid { grid-template-columns: 1fr; } }
+  .proj {
+    display: block; text-decoration: none;
+    background: var(--paper);
+    box-shadow: 0 0 0 1px var(--hairline);
+    border-radius: 8px; overflow: hidden;
+    transition: box-shadow 200ms ease, transform 300ms var(--ease-swift);
+  }
+  .proj:hover { text-decoration: none; box-shadow: 0 0 0 1px var(--hairline-strong), var(--shadow-medium); transform: translateY(-3px); }
+  .proj-cover {
+    display: block; aspect-ratio: 16 / 10; position: relative;
+    background-color: var(--surface);
+    background-size: cover; background-position: center;
+  }
+  .proj-cover .cover-ph {
+    position: absolute; left: 12px; bottom: 10px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    color: var(--faint);
+  }
+  /* 竖版海报封面：同图虚化打底 + 完整海报居中 */
+  .proj-cover.poster-mode { display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .cover-blur {
+    position: absolute; inset: -24px;
+    background-size: cover; background-position: center;
+    filter: blur(22px) saturate(1.15);
+    opacity: 0.75;
+  }
+  .cover-contain {
+    position: relative;
+    max-height: 86%; max-width: 62%;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+  }
+  .proj-row {
+    display: flex; justify-content: space-between; align-items: baseline; gap: 10px;
+    padding: 12px 14px 2px;
+  }
+  .proj-title { font-size: 14px; font-weight: 600; color: var(--ink); }
+  .proj-arrow { color: var(--muted); transition: transform 200ms var(--ease-swift); flex-shrink: 0; }
+  .proj:hover .proj-arrow { transform: translateX(4px); }
+  .proj-sub { display: block; padding: 3px 14px 14px; font-size: 12.5px; color: var(--muted); }
+
+  /* ---------- hero 右栏：头像 + 关于我标签 ---------- */
+  .hero-side { display: flex; flex-direction: column; gap: 14px; }
+  .about-tags { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+  .about-tags .at-label {
+    width: 100%;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--faint); margin-bottom: 2px;
+  }
+  .about-tags span:not(.at-label) {
+    display: inline-block;
+    box-shadow: 0 0 0 1px var(--hairline);
+    color: var(--body);
+    border-radius: 3px;
+    padding: 1px 8px;
+    font-size: 11.5px;
+    line-height: 1.7;
+    transition: box-shadow 150ms ease;
+  }
+  .about-tags span:not(.at-label):hover { box-shadow: 0 0 0 1px var(--hairline-strong); }
+
+  /* ---------- 实习/项目分点 ---------- */
+  ul.sub { list-style: none; margin-top: 6px; }
+  ul.sub li {
+    position: relative;
+    padding: 3px 0 3px 16px;
+    font-size: 13.5px; color: var(--muted);
+  }
+  ul.sub li::before {
+    content: "·";
+    position: absolute; left: 2px;
+    color: var(--faint); font-weight: 700;
+  }
+  ul.sub li strong { color: var(--body); font-weight: 500; }
+</style>
+</head>
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="wordmark" href="#/about">
+      <span class="zh">赵珮伊</span>
+      <span class="en-wm">PEIYI ZHAO</span>
+      <span class="pixel-cluster" aria-hidden="true"><i class="lit"></i><i></i><i class="dim"></i><i class="empty"></i></span>
+    </a>
+    <nav class="tabs" aria-label="板块导航">
+      <a href="#/about" data-tab="about"><span data-copy="tab.about">关于我</span><span class="en">Hello</span></a>
+      <a href="#/academic" data-tab="academic"><span data-copy="tab.academic">学术经历</span><span class="en">Academic</span></a>
+      <a href="#/work" data-tab="work"><span data-copy="tab.work">实践经历</span><span class="en">Work</span></a>
+      <a href="#/moments" data-tab="moments"><span data-copy="tab.moments">人生瞬间</span><span class="en" data-copy="tag.moments.1.en">Moments</span></a>
+    </nav>
+    <button class="theme-btn" id="edit-toggle" type="button" aria-label="编辑文案模式">✎</button>
+    <button class="theme-btn" id="theme-toggle" type="button" aria-label="切换深色模式">◐</button>
+  </div>
+</header>
+
+<div class="layout">
+
+  <!-- ============ 侧栏（全板块常驻）============ -->
+  <aside class="sidebar develop" style="--d:60ms">
+    <h1>赵珮伊</h1>
+    <div class="en-name">Peiyi (Paisley) Zhao</div>
+    <div class="affil">
+      复旦大学-伦敦政治经济学院（LSE）<br>
+      全球媒介与传播双学位 2026 级硕士生<br>
+      CSC 国际组织后备人才培养项目学员
+    </div>
+    <div class="keywords">
+      <span>智能传播</span>
+      <span>数字包容</span>
+      <span>国际传播</span>
+      <span>体育传播</span>
+    </div>
+    <div class="contact">
+      <div class="row">
+        <span class="k">Contact</span>
+        <span class="v icon-links">
+          <a href="mailto:puiyee_jessica@foxmail.com" title="puiyee_jessica@foxmail.com" aria-label="Email"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+          <a href="https://www.linkedin.com/in/peiyi-zhao-85b6a138b/" title="LinkedIn" aria-label="LinkedIn"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        </span>
+      </div>
+      <div class="row">
+        <span class="k">Base</span>
+        <span class="v">🇨🇳 北京 · 上海　🇬🇧 伦敦　🇺🇳 待定</span>
+      </div>
+      <div class="row">
+        <span class="k">Skills</span>
+        <span class="v">AI Native · 跨文化交流 · 用户洞察 · 数据分析</span>
+      </div>
+      <!-- 上线前可补充：
+      <div class="row"><span class="k">CV</span><span class="v"><a href="CV.pdf">简历 PDF ↗</a></span></div>
+      <div class="row"><span class="k">Scholar</span><span class="v"><a href="#">Google Scholar ↗</a></span></div>
+      <div class="row"><span class="k">Douban</span><span class="v"><a href="https://www.douban.com/people/162681430/">豆瓣 ↗</a></span></div> -->
+    </div>
+  </aside>
+
+  <!-- ============ 板块页 ============ -->
+  <main>
+
+    <!-- ════════════ 板块一：关于我 ════════════ -->
+    <div class="page current" id="page-about" data-page="about">
+
+      <!-- hero：自我介绍 + 头像（cali 首页构图：文左图右） -->
+      <div class="hero develop" style="--d:120ms">
+        <div>
+          <p class="lead" data-copy="hero.lead">
+            <strong>Hi 你好，我是珮伊</strong>
+          </p>
+          <p class="body-text" data-copy="hero.p1">
+            一个穿梭于人文和科技之间的探索者<br>永远不会放弃的事情是和真实的人产生连接，以及对美的追求
+          </p>
+          <div class="bucket-head" data-copy="hero.bucket.head">我做过的一些：</div>
+          <ul class="bucket">
+            <li><span class="tick">✓</span><span data-copy="hero.bucket.1">在 Kimi 月之暗面探索 AI 行业最前沿，参与 <strong>K3 开源模型</strong>的 SOTA 时刻</span></li>
+            <li><span class="tick">✓</span><span data-copy="hero.bucket.2">黑客松 36 小时内完成 AI 软件从 0 到 1，拿下<strong>"优秀产品奖"</strong></span></li>
+            <li><span class="tick">✓</span><span data-copy="hero.bucket.3">本科期间坚持<strong>早读三年</strong>，<strong>英语演讲</strong>从校赛、市赛走向国赛</span></li>
+            <li><span class="tick">✓</span><span data-copy="hero.bucket.4">在豆瓣社区分享<strong>文科生 AI 使用经验</strong>，获得 <strong>5500+ 点赞收藏</strong></span></li>
+            <li><span class="tick">✓</span><span data-copy="hero.bucket.5">热衷<strong>公益</strong>，兴安盟<strong>支教</strong>、扎根残障社群，创作纪录片、视频报道</span></li>
+          </ul>
+        </div>
+        <div class="hero-side">
+          <div class="portrait" style="background: url('assets/avatar.jpg') center/cover;" role="img" aria-label="赵珮伊照片"></div>
+          <div class="about-tags">
+            <span class="at-label" data-copy="hero.tags.label">关于我</span>
+            <span data-copy="hero.tag.1">国家二级运动员</span>
+            <span data-copy="hero.tag.2">8年戏剧观众</span>
+            <span data-copy="hero.tag.3">Vibe Coder</span>
+            <span data-copy="hero.tag.4">健身房团课有氧爱好者</span>
+            <span data-copy="hero.tag.5">纪实影像痴迷者</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 01 教育经历（复刻 cali 经历版式：左 机构+角色，右 mono 时间） -->
+      <section class="blk develop" style="--d:180ms">
+        <div class="section-tag" aria-hidden="true"><span class="num">01</span><span class="hatch"></span><span class="label" data-copy="tag.about.1">教育经历</span><span class="en" data-copy="tag.about.1.en">EDUCATION</span><span class="rule"></span></div>
+        <ul class="tl">
+          <!-- ✏️ 时间线草稿，你来增删改 -->
+          <li><span><span class="org">复旦大学新闻学院</span><span class="role">新闻与传播 硕士</span></span><span class="when">2026—2028</span></li>
+          <li><span><span class="org">伦敦政治经济学院（LSE）</span><span class="role">全球媒介与传播 硕士</span></span><span class="when">2026—2027</span></li>
+          <li><span><span class="org">中国传媒大学电视学院</span><span class="role">国际新闻与传播 学士</span></span><span class="when">2022—2026</span></li>
+          <li><span><span class="org">北京市第三十五中学</span><span class="role">高中</span></span><span class="when">2019—2022</span></li>
+        </ul>
+      </section>
+
+      <!-- 02 循环播放中（复刻 cali vinyl shelf） -->
+      <section class="blk develop" style="--d:240ms">
+        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.about.2">循环播放中</span><span class="en" data-copy="tag.about.2.en">On Repeat</span><span class="rule"></span></div>
+        <div class="shelf-hint" data-copy="hint.vinyl">（横滑拖动 点击可跳转播放器）</div>
+        <div class="shelf-box">
+          <div class="vinyl-stage" data-shelf="music" aria-label="最爱的唱片"></div>
+          <div class="plank" aria-hidden="true"><div class="p-top"></div><div class="p-front"></div></div>
+        </div>
+        <div class="shelf-note" data-note="music"></div>
+      </section>
+
+      <!-- 03 最佳现场（票根墙：类型 + 日期，无外链无短评） -->
+      <section class="blk develop" style="--d:360ms">
+        <div class="section-tag" aria-hidden="true"><span class="num">03</span><span class="hatch"></span><span class="label" data-copy="tag.about.4">最佳现场</span><span class="en" data-copy="tag.about.4.en">Best Live/SHOW</span><span class="rule"></span></div>
+        <div class="shelf-hint"><span data-copy="hint.drama.pre">已观看</span> <span class="live-count" id="drama-count">0</span> <span data-copy="hint.drama.post">部现场作品</span></div>
+        <div class="shelf-hint sub" data-copy="hint.drama.sub">以下15部为个人给出的五星佳作</div>
+        <ul class="stubs pop" data-stubs="drama" aria-label="最佳现场票根"></ul>
+      </section>
+
+    </div>
+
+    <!-- ════════════ 板块二：学术经历 ════════════ -->
+    <div class="page" id="page-academic" data-page="academic">
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">01</span><span class="hatch"></span><span class="label" data-copy="tag.academic.1">研究兴趣</span><span class="en" data-copy="tag.academic.1.en">Research Interests</span><span class="rule"></span></div>
+
+        <div class="dir-card">
+          <h3><span class="idx">I.</span>智能传播、媒介治理与青少年社会心态</h3>
+          <p>AI、智能体进入日常生活后，青少年如何接触、理解与信任它们，技术使用如何塑造社会心态，以及算法治理与未成年人保护如何回应。</p>
+          <p class="ev">📝 未成年运动员媒介形象研究<br>🤖 头部 AI 公司用户增长实习的一线观察<br>🧒 面向流动儿童 AI 科普公益的深度扎根（字节跳动跳跳糖公益）</p>
+        </div>
+
+        <div class="dir-card">
+          <h3><span class="idx">II.</span>可及性、数字包容与无障碍传播</h3>
+          <p>对弱势群体（以残障者为代表）的媒介可及性：接入（数字不平等与可行能力）、体验（人机交互与无障碍信息设计）、参与（媒介融入与自我呈现）。</p>
+          <p class="ev">🎓 央视春晚无障碍转播研究（校级优秀毕业论文）<br>♿ IAMCR 包容性传播和残障研究分会独作论文（残障创作者的数字民族志）<br>🧩 北大"孤独症儿童信息化养育干预"项目研究助理<br>🤝 残障群体志愿服务 180+ 小时 · IAMCR-ICO 中国秘书处成员</p>
+        </div>
+
+        <div class="dir-card">
+          <h3><span class="idx">III.</span>智能时代的体育与国际传播</h3>
+          <p>体育是跨语言、跨文化的"通用语言"：关注大型赛事的智媒化转播生产、运动员媒介形象的建构与伦理，以及体育在公共外交与国家叙事中的作用。</p>
+          <p class="ev">🏅 《媒介与体育》集刊独作论文<br>🤖 NCA 双年会一作论文（AIGC × 体育视听新闻）<br>🎙️ 国际赛事转播协调（杭州亚运会 / 哈尔滨亚冬会 / 短道速滑世锦赛）</p>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.academic.2">论文与会议</span><span class="en" data-copy="tag.academic.2.en">Publications</span><span class="rule"></span></div>
+        <ul class="items">
+          <li>
+            <span class="badge">独立作者</span>
+            《"领奖台上"到"聚光灯下"：中国未成年运动员媒介形象构建中的伦理困境》<br>
+            <span class="venue"><a href="https://kns.cnki.net/kcms2/article/abstract?v=0VvkOTFCJRoUF8JfpErVKZ8-NLFTYHFO44CzMPf4YFqwyyjaUS3nAwXcYHdSFYcPz0Vfr85i2da6WThjk-nQz_PnNW8RMv2DY8KKKIVYQmw7q0ZUNgx2Ct0Uny_9JlhzFLiFE-dccwoOv_qJbn-dv-BBpFHh91-26uZtwSNJujpvTTa86v-OsQ==&uniplatform=NZKPT&language=CHS">《媒介与体育》集刊 2025 年第 2 期（页 99–110）</a></span>
+          </li>
+          <li>
+            <span class="badge">独立作者</span>
+            <em>Performing Disability in the Digital Marketplace: Self-Representation, Stigma, and the Commodification of the Body in Chinese Social Media</em><br>
+            <span class="venue"><a href="https://iamcr.org/singapore2025">IAMCR 2025 年会</a> · 包容性传播和残障研究分会</span>
+          </li>
+          <li>
+            <span class="badge">第一作者</span>
+            <em>Artificial Intelligence-Driven Innovation in Chinese Sports Audiovisual News Coverage: Empowerment, Challenges, and Future Directions</em><br>
+            <span class="venue"><a href="https://mp.weixin.qq.com/s/-LdNx94oP6MWltTJhZWtTA">第五届 NCA（全美传播学会）双年会</a> · "全球化时代的传播、媒介与政府治理"</span>
+          </li>
+          <li>
+            <span class="badge">独立作者</span>
+            <em>Breaking Through Barriers: Digital Employment for Visually Impaired People from the Perspective of Technology Empowerment</em><br>
+            <span class="venue"><a href="https://tvs.cuc.edu.cn/2024/1220/c452a247151/pagem.htm">NCA 第十届中美传播学者高峰论坛</a></span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">03</span><span class="hatch"></span><span class="label" data-copy="tag.academic.4">课题项目</span><span class="en" data-copy="tag.academic.4.en">Projects</span><span class="rule"></span></div>
+        <ul class="items">
+          <li>
+            <span class="badge gray">部级项目</span>
+            "国际网络视听传播分层、分类、分群叙事体系研究"（国家广播电视总局部级社科研究项目）<br>
+            <span class="venue">研究成员（项目组唯一本科生）｜2024.01–2024.09</span>
+          </li>
+          <li>
+            <span class="badge gray">横向课题</span>
+            "全媒体视域下广西区域性国际联动传播体系研究"（广西日报传媒集团委托）<br>
+            <span class="venue">研究成员｜2025.03–2026.03</span>
+          </li>
+          <li>
+            <span class="badge gray">学术工作</span>
+            IAMCR-ICO（包容性传播和残障研究分会）中国秘书处成员<br>
+            <span class="venue">协助筹办 IAMCR 残障研究中国区域网络研讨会及 2025 新加坡年会宣推联络｜2024.12 起</span>
+          </li>
+          <li>
+            <span class="badge gray">学术工作</span>
+            "孤独症儿童信息化养育干预研究"（北京大学人口研究所）<br>
+            <span class="venue">研究助理｜2025.01–2025.04</span>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">04</span><span class="hatch"></span><span class="label" data-copy="tag.academic.3">本科毕业论文</span><span class="en" data-copy="tag.academic.3.en">Thesis</span><span class="rule"></span></div>
+        <div class="highlight">
+          <h3>《可及之上：央视春晚无障碍融合传播的互动仪式研究》 <span class="badge">校级优秀毕业论文</span></h3>
+          <p>
+            以 2025、2026 两届央视春晚无障碍转播（视障版/听障版）为纵向案例，基于柯林斯互动仪式链理论，采用网络民族志和半结构访谈，组建听障社群（53 人）与视障社群（32 人）进行参与式观察，获取有效互动文本 223 条；跨两届春晚访谈残障受访者 16 人。研究发现，感官代偿技术拆除了残障群体进入媒介仪式的宏观屏障，却在微观情境中制造了新的参与分层：技术可及性因残障类型、设备条件与平台适配而并不均衡；传者端的技术整合与受众端的家庭仪式空间之间存在反直觉的张力；残障观众并非被动接收者，而是基于切身经验持续提出替代方案的"产品洞察者"。论文提出"感官代偿式共在"，尝试拓展互动仪式链理论在残障传播中的应用，并就分轨推流、残健同屏设计、平台内置社交功能、无障碍服务常态化给出实践建议。
+          </p>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ════════════ 板块三：实践经历 ════════════ -->
+    <div class="page" id="page-work" data-page="work">
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">01</span><span class="hatch"></span><span class="label" data-copy="tag.work.1">实习与工作</span><span class="en" data-copy="tag.work.1.en">Experience</span><span class="rule"></span></div>
+        <ul class="items">
+          <li class="exp">
+            <img class="exp-logo" src="assets/logos/moonshot.png" alt="Moonshot AI logo">
+            <div class="exp-body"><strong>Moonshot AI（Kimi）</strong> · AI 增长运营，2026.01–2026.08
+            <ul class="sub">
+              <li><strong>核心模型和 Agent 产品宣发：</strong>跟进 K2.5/K2.6/K3 模型与 Kimi Work 桌面端、Kimi Claw（Kimi 版小龙虾）等产品宣发，半年累计发布达人内容 500+ 条、曝光超 5000 万</li>
+              <li><strong>国内全渠道达人营销：</strong>独立完成从达人筛选、建联、Brief 撰写、内容共创、效果追踪和数据复盘全流程，建联 130+ 位 KOL/KOC，投放覆盖小红书、视频号、公众号、抖音、B站、即刻、X 和 YouTube 等平台</li>
+              <li><strong>用户洞察与竞品调研：</strong>搭建竞品调研框架，输出 13 份竞品调研（调研产品如 Claude Code/Cowork、Codex、WorkBuddy 等，模型如 Fable、Image 2.0、Gemini 3.1 Pro、GLM 5.2 等），复盘大规模用户数据和 15+ 期爆款案例</li>
+              <li><strong>内容素材自闭环：</strong>基于 Kimi 模型能力与提示词工程跑通视频生成、3D 网页、互动游戏等多模态玩法，官方 X 案例单条最高 24 万+ Views</li>
+            </ul>
+            </div>
+          </li>
+          <li class="exp">
+            <img class="exp-logo" src="assets/logos/cctvplus.png" alt="CCTV+ logo">
+            <div class="exp-body"><strong>央视环球国际视频通讯社（CCTV+）</strong>，2025.07–2025.09
+            <ul class="sub">
+              <li><strong>内容制作与本地化：</strong>负责 30+ 条视频新闻的稿件编译与视频制作，内容涵盖文化、科技、社会等领域，面向国内媒体客户分发；参与纪录片《舌尖上的中国 第四季》等重点项目的英译与本地化重制</li>
+              <li><strong>国际舆情监测：</strong>日常跟进法新社、美联社等通讯社及海外主流媒体的报道动向，进行素材挖掘、新闻摘编和事实核查</li>
+            </ul>
+            </div>
+          </li>
+          <li class="exp">
+            <img class="exp-logo" src="assets/logos/cmg.png" alt="中央广播电视总台 logo">
+            <div class="exp-body"><strong>中央广播电视总台创新发展研究中心</strong>，2024.01–2024.04
+            <ul class="sub">
+              <li><strong>学术联络与跨部门协作：</strong>对接 30+ 位制片人、编导与国内外专家团队，深度参与学术联络工作，确保信息流转的高效与准确</li>
+              <li><strong>内容评审和案例库搭建：</strong>参与总台年度奖项评选的 200+ 份资料编审与复盘，整理台内国际传播优秀案例库；协助撰写行业分析简报 2 份，为战略布局提供信息参考</li>
+              <li><strong>行业前沿洞察与活动落地：</strong>协助中心进行国际传播视听前沿趋势的调研，邀请学界、业界专家进行 AI 赋能内容生产和视频创作系列授课 3 期</li>
+            </ul>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.work.2">项目与作品</span><span class="en" data-copy="tag.work.2.en">Selected Work</span><span class="rule"></span></div>
+        <ul class="proj-grid">
+          <li>
+            <a class="proj" href="https://github.com/dingdinglz/alcheme">
+              <span class="proj-cover poster-mode">
+                <span class="cover-blur" style="background-image:url('assets/proj-hackathon-poster.jpg')"></span>
+                <img class="cover-contain" src="assets/proj-hackathon-poster.jpg" alt="Alcheme 帧我 · 黑客松产品海报">
+              </span>
+              <span class="proj-row"><span class="proj-title">抖音 AI 创变者黑客松</span><span class="proj-arrow">→</span></span>
+              <span class="proj-sub" data-copy="proj.1.sub">AI 软件 · 视频对话和情绪疗愈 · 优秀产品奖（Top 10%）</span>
+            </a>
+          </li>
+          <li>
+            <a class="proj" href="https://mp.weixin.qq.com/s/Zvj-2VcdXnHF_ds5MxbBmw">
+              <span class="proj-cover" style="background-image:url('assets/proj-tencent.jpg')"></span>
+              <span class="proj-row"><span class="proj-title">腾讯 × 中国残联就业项目</span><span class="proj-arrow">→</span></span>
+              <span class="proj-sub" data-copy="proj.2.sub">整合营销 · 助残就业和科技向善 · 上线当天触达 1500 万+</span>
+            </a>
+          </li>
+          <li>
+            <a class="proj" href="https://pan.baidu.com/s/1aUhhw0pZHxHX9pTteH9uDQ?pwd=auqm">
+              <span class="proj-cover" style="background-image:url('assets/proj-doc.jpg')"></span>
+              <span class="proj-row"><span class="proj-title">纪录片《安能不凡》</span><span class="proj-arrow">→</span></span>
+              <span class="proj-sub" data-copy="proj.3.sub">导演作品 · 人物纪实 · 青少年跳水运动员</span>
+            </a>
+          </li>
+          <li>
+            <a class="proj" href="https://mp.weixin.qq.com/s/jD7C5hE8pKWeasZf2w0r9g">
+              <span class="proj-cover" style="background-image:url('assets/proj-variety.jpg')"></span>
+              <span class="proj-row"><span class="proj-title">综艺短片《汉字实验室》</span><span class="proj-arrow">→</span></span>
+              <span class="proj-sub" data-copy="proj.5.sub">主持 / 制片 · 和外国友人聊汉字之美</span>
+            </a>
+          </li>
+          <li>
+            <a class="proj" href="article-disability-influencer.html">
+              <span class="proj-cover" style="background-image:url('assets/proj-news.jpg')"></span>
+              <span class="proj-row"><span class="proj-title">英语新闻特稿</span><span class="proj-arrow">→</span></span>
+              <span class="proj-sub" data-copy="proj.4.sub">残障者互联网就业议题报道 · 英文写作</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- ════════════ 板块四：人生瞬间 ════════════ -->
+    <div class="page" id="page-moments" data-page="moments">
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">01</span><span class="hatch"></span><span class="label" data-copy="tag.moments.1">人生瞬间</span><span class="en">Moments</span><span class="rule"></span></div>
+        <div class="polaroids pop">
+          <figure class="polaroid" style="--i:0">
+            <div class="ph"><img src="moments/graduation.jpg" alt="毕业晚会，和中传说再见" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.1.cap">毕业晚会，和中传说再见</figcaption>
+            <div class="ph-date" data-copy="moment.1.date">2026.06</div>
+          </figure>
+          <figure class="polaroid" style="--i:1">
+            <div class="ph"><img src="moments/kimi.jpg" alt="在 Kimi 实习的日子" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.2.cap">在 Kimi 实习的日子</figcaption>
+            <div class="ph-date" data-copy="moment.2.date">2026.04</div>
+          </figure>
+          <figure class="polaroid" style="--i:2">
+            <div class="ph"><img src="moments/bungee.jpg" alt="贵州猴耳天坑，纵身一跃" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.3.cap">贵州猴耳天坑，纵身一跃</figcaption>
+            <div class="ph-date" data-copy="moment.3.date">2026.04</div>
+          </figure>
+          <figure class="polaroid" style="--i:3">
+            <div class="ph"><img src="moments/hackathon.jpg" alt="参加跨年黑客松" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.4.cap">参加跨年黑客松</figcaption>
+            <div class="ph-date" data-copy="moment.4.date">2026.01</div>
+          </figure>
+          <figure class="polaroid" style="--i:4">
+            <div class="ph"><img src="moments/sportforum.jpg" alt="第三届“媒介与体育”论坛" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.5.cap">第三届“媒介与体育”论坛</figcaption>
+            <div class="ph-date" data-copy="moment.5.date">2025.04</div>
+          </figure>
+          
+          <figure class="polaroid" style="--i:6">
+            <div class="ph"><img src="moments/asianwinter.jpg" alt="哈尔滨亚冬会" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.7.cap">哈尔滨亚冬会</figcaption>
+            <div class="ph-date" data-copy="moment.7.date">2025.02</div>
+          </figure>
+          <figure class="polaroid" style="--i:7">
+            <div class="ph"><img src="moments/documentary.jpg" alt="纪录片拍摄中，采访运动员" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.8.cap">纪录片拍摄中，采访运动员</figcaption>
+            <div class="ph-date" data-copy="moment.8.date">2024.10</div>
+          </figure>
+          <figure class="polaroid" style="--i:8">
+            <div class="ph"><img src="moments/wudong.jpg" alt="陪伴心智障碍者跳舞" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.9.cap">陪伴心智障碍者跳舞</figcaption>
+            <div class="ph-date" data-copy="moment.9.date">2024.09</div>
+          </figure>
+          <figure class="polaroid" style="--i:9">
+            <div class="ph"><img src="moments/zhijiao.jpg" alt="内蒙古兴安盟小学支教" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.10.cap">内蒙古兴安盟小学支教</figcaption>
+            <div class="ph-date" data-copy="moment.10.date">2024.08</div>
+          </figure>
+          <figure class="polaroid" style="--i:11">
+            <div class="ph"><img src="moments/anchor.jpg" alt="演播室出镜" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.12.cap">演播室出镜</figcaption>
+            <div class="ph-date" data-copy="moment.12.date">2024.05</div>
+          </figure>
+          <figure class="polaroid" style="--i:12">
+            <div class="ph"><img src="moments/director.jpg" alt="校开学典礼节目导演" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.13.cap">校开学典礼节目导演</figcaption>
+            <div class="ph-date" data-copy="moment.13.date">2023.09</div>
+          </figure>
+          <figure class="polaroid" style="--i:13">
+            <div class="ph"><img src="moments/speech.jpg" alt="英语演讲比赛现场" loading="lazy"></div>
+            <figcaption class="ph-cap" data-copy="moment.14.cap">英语演讲比赛现场</figcaption>
+            <div class="ph-date" data-copy="moment.14.date">2023.05</div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="blk">
+        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.moments.2">荣誉</span><span class="en" data-copy="tag.moments.2.en">Honors</span><span class="rule"></span></div>
+        <ul class="hn-list">
+          <li class="hn"><span class="hn-t"><span class="hn-e">🏅</span><span data-copy="hn.1">国家奖学金</span></span><span class="hn-y">2025 · 学业</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">🎓</span><span data-copy="hn.2">中国传媒大学优秀毕业生</span></span><span class="hn-y">2026 · 学业</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">📖</span><span data-copy="hn.3">中国传媒大学优秀毕业论文</span></span><span class="hn-y">2026 · 学业</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">🏆</span><span data-copy="hn.4">"外研社·国才杯"国际传播赛项全国银奖、北京市金奖</span></span><span class="hn-y">2024 · 竞赛</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">🎤</span><span data-copy="hn.5">首都高校英语演讲风采大赛三等奖</span></span><span class="hn-y">2023 · 竞赛</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">💻</span><span data-copy="hn.6">抖音创变者黑客松优秀产品奖</span></span><span class="hn-y">2026 · 开发</span></li>
+          <li class="hn"><span class="hn-t"><span class="hn-e">🏊</span><span data-copy="hn.7">国家跳水二级运动员</span></span><span class="hn-y">2013 · 体育</span></li>
+          
+        </ul>
+      </section>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- 编辑模式浮条 -->
+<div class="editbar" id="editbar">
+  <span id="edit-status">编辑模式：点文字直接改</span>
+  <button type="button" id="export-copy">保存 ✓</button>
+  <button type="button" class="ghost" id="clear-copy">清除暂存</button>
+  <button type="button" class="ghost" id="exit-edit">退出</button>
+</div>
+
+<footer>
+  <div class="colophon">
+    <span data-copy="footer.left">© 2026 赵珮伊 Peiyi Zhao</span>
+    <span class="mono">UPDATED 2026.08</span>
+  </div>
+</footer>
+
+<script src="copy.js"></script>
+<script src="data.js"></script>
+<script>
+  // ---------- 主题 ----------
+  (function () {
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    var initial = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    root.setAttribute('data-theme', initial);
+
+    document.getElementById('theme-toggle').addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.classList.add('no-transitions');
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { root.classList.remove('no-transitions'); });
+      });
+    });
+  })();
+
+  // ---------- Tab 分区导航（hash 路由）----------
+  (function () {
+    var PAGES = ['about', 'academic', 'work', 'moments'];
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function currentFromHash() {
+      var m = location.hash.match(/^#\/(\w+)/);
+      return (m && PAGES.indexOf(m[1]) !== -1) ? m[1] : 'about';
+    }
+
+    function show(name, animate) {
+      PAGES.forEach(function (p) {
+        var el = document.getElementById('page-' + p);
+        var on = p === name;
+        el.classList.toggle('current', on);
+        el.classList.remove('enter');
+      });
+      document.querySelectorAll('.tabs a').forEach(function (a) {
+        a.classList.toggle('active', a.getAttribute('data-tab') === name);
+        if (a.getAttribute('data-tab') === name) a.setAttribute('aria-current', 'page');
+        else a.removeAttribute('aria-current');
+      });
+      var page = document.getElementById('page-' + name);
+      if (animate && !reduced) {
+        void page.offsetWidth;
+        page.classList.add('enter');
+      }
+      window.scrollTo(0, 0);
+    }
+
+    window.addEventListener('hashchange', function () { show(currentFromHash(), true); });
+    if (!location.hash) history.replaceState(null, '', '#/about');
+    show(currentFromHash(), false);
+  })();
+
+  // ---------- 入场 develop ----------
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var els = document.querySelectorAll('.develop');
+    if (reduced || !('IntersectionObserver' in window)) {
+      els.forEach(function (el) { el.classList.add('in'); el.style.opacity = 1; el.style.filter = 'none'; });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // ============================================================
+  // 架子：循环播放中（vinyl）+ 珍藏架（books）
+  // 数据来自 data.js 的 window.SHELF_DATA
+  // ============================================================
+  (function () {
+    var DATA = window.SHELF_DATA || {};
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function noteEl(key) { return document.querySelector('[data-note="' + key + '"]'); }
+    function reviewEl(key) { return document.querySelector('[data-review="' + key + '"]'); }
+
+    function setNote(key, item) {
+      var el = noteEl(key);
+      if (!el || !item) return;
+      var label = '《' + item.title + '》' + (item.creator ? ' · ' + item.creator : '') + (item.year ? ' · ' + item.year : '');
+      el.innerHTML = item.link
+        ? '<a href="' + item.link + '" target="_blank" rel="noopener">' + label + ' <span class="ext">↗</span></a>'
+        : label;
+    }
+
+    function setReview(key, item) {
+      var el = reviewEl(key);
+      if (!el) return;
+      if (item && item.review) {
+        el.textContent = '「' + item.review + '」';
+        el.style.display = '';
+      } else {
+        el.textContent = '';
+      }
+    }
+
+    // ---------- 黑胶架 ----------
+    function buildVinyl(stage, items, key) {
+      var n = items.length;
+      var sel = Math.floor(n / 2);
+      var SPACING = 62, W = 152;
+      var sleeves = [], shadows = [];
+
+      items.forEach(function (item, i) {
+        var sh = document.createElement('div');
+        sh.className = 'sleeve-sh';
+        stage.appendChild(sh);
+        shadows.push(sh);
+
+        var el = document.createElement('div');
+        el.className = 'sleeve';
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', item.title);
+        el.innerHTML =
+          '<div class="spine-l" style="background-image:url(\'' + item.cover + '\')"><span>' + item.title + ' · ' + (item.creator || '') + '</span></div>' +
+          '<div class="spine-r" style="background-image:url(\'' + item.cover + '\')"></div>' +
+          '<div class="face" style="background-image:url(\'' + item.cover + '\')"></div>';
+        el.addEventListener('click', function () { if (!dragged) select(i); });
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(i); }
+        });
+        stage.appendChild(el);
+        sleeves.push(el);
+      });
+
+      var curF = sel;
+      function render(f) {   // f = 浮点选中位（拖动中连续）
+        curF = f;
+        sleeves.forEach(function (el, i) {
+          var rel = i - f;
+          var a = Math.abs(rel);
+          var rot = rel === 0 ? 0 : (rel < 0 ? 1 : -1) * Math.min(48 + a * 7, 75);
+          var z = -Math.min(a, 4.5) * 26 + (a < 0.5 ? 34 : 0);
+          var scale = a < 0.5 ? 1.05 : 1;
+          el.style.transform =
+            'translateX(calc(-50% + ' + (rel * SPACING) + 'px)) ' +
+            'translateZ(' + z + 'px) rotateY(' + rot + 'deg) scale(' + scale + ')';
+          el.style.zIndex = a < 0.5 ? 60 : Math.round(50 - a);
+          var sh = shadows[i];
+          sh.style.transform = 'translateX(calc(-50% + ' + (rel * SPACING) + 'px)) scaleX(' + (a < 0.5 ? 1.15 : 0.9) + ')';
+          sh.style.opacity = Math.max(0.25, 1 - a * 0.18);
+        });
+      }
+
+      function select(i) {
+        sel = Math.max(0, Math.min(n - 1, i));
+        render(sel);
+        setNote(key, items[sel]);
+      }
+
+      // 拖动 / 触控板横滑
+      var dragged = false, startX = 0, startF = 0;
+      stage.addEventListener('pointerdown', function (e) {
+        dragged = false;
+        startX = e.clientX; startF = sel;
+        stage.classList.add('dragging');
+        stage.setPointerCapture(e.pointerId);
+      });
+      stage.addEventListener('pointermove', function (e) {
+        if (!stage.classList.contains('dragging')) return;
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 6) dragged = true;
+        if (dragged) render(Math.max(0, Math.min(n - 1, startF - dx / SPACING)));
+      });
+      function endDrag() {
+        if (!stage.classList.contains('dragging')) return;
+        stage.classList.remove('dragging');
+        if (dragged) {
+          select(Math.round(curF));
+        }
+        setTimeout(function () { dragged = false; }, 0);
+      }
+      stage.addEventListener('pointerup', endDrag);
+      stage.addEventListener('pointercancel', endDrag);
+      stage.addEventListener('wheel', function (e) {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+          e.preventDefault();
+          if (Math.abs(e.deltaX) > 18) select(sel + (e.deltaX > 0 ? 1 : -1));
+        }
+      }, { passive: false });
+
+      select(sel);
+      if (reduced) stage.querySelectorAll('.sleeve').forEach(function (s) { s.style.transition = 'none'; });
+    }
+
+    // ---------- 珍藏架（书脊 + 展开）----------
+    function buildBooks(stage, items, key) {
+      var sel = 0;
+      items.forEach(function (item, i) {
+        var el = document.createElement('div');
+        el.className = 'book' + (i === 0 ? ' open' : '');
+        el.style.backgroundImage = 'url(\'' + item.cover + '\')';
+        el.setAttribute('role', 'button');
+        el.setAttribute('tabindex', '0');
+        el.setAttribute('aria-label', item.title);
+        var t = document.createElement('span');
+        t.className = 'spine-title';
+        t.textContent = item.title;
+        el.appendChild(t);
+        function open() {
+          stage.querySelectorAll('.book').forEach(function (b) { b.classList.remove('open'); });
+          el.classList.add('open');
+          sel = i;
+          setNote(key, item);
+          setReview(key, item);
+          el.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+        }
+        el.addEventListener('click', open);
+        el.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+        });
+        stage.appendChild(el);
+      });
+      setNote(key, items[0]);
+      setReview(key, items[0]);
+    }
+
+    // ---------- 票根墙（纯展示，无交互）----------
+    function buildStubs(wrap, items) {
+      items.forEach(function (item, i) {
+        var li = document.createElement('li');
+        li.className = 'stub';
+        li.style.setProperty('--i', i);
+        // 装饰条码：由标题字符码确定性生成
+        var bars = '';
+        for (var c = 0; c < item.title.length; c++) {
+          var code = item.title.charCodeAt(c);
+          bars += '<i style="width:' + (1 + code % 3) + 'px"></i>';
+        }
+        li.innerHTML =
+          '<div class="stub-main">' +
+            '<div class="stub-no"><span>№ ' + String(i + 1).padStart(2, '0') + '</span><span class="stub-type">' + (item.type || '') + '</span></div>' +
+            '<div class="stub-title">' + item.title + '</div>' +
+            '<div class="stub-meta">' + (item.date || '') + (item.creator ? ' · ' + item.creator : '') + '</div>' +
+            '<div class="stub-barcode" aria-hidden="true">' + bars + '</div>' +
+          '</div>' +
+          '<div class="stub-stub" aria-hidden="true"><span>副券</span></div>';
+        wrap.appendChild(li);
+      });
+    }
+
+    document.querySelectorAll('.vinyl-stage').forEach(function (stage) {
+      var key = stage.getAttribute('data-shelf');
+      var items = DATA[key];
+      if (items && items.length) buildVinyl(stage, items, key);
+      else stage.innerHTML = '<div class="todo-note">// TODO: 封面数据未加载（检查 data.js）</div>';
+    });
+    document.querySelectorAll('.books-stage').forEach(function (stage) {
+      var key = stage.getAttribute('data-shelf');
+      var items = DATA[key];
+      if (items && items.length) buildBooks(stage, items, key);
+      else stage.innerHTML = '<div class="todo-note">// TODO: 封面数据未加载（检查 data.js）</div>';
+    });
+    document.querySelectorAll('[data-stubs]').forEach(function (wrap) {
+      var key = wrap.getAttribute('data-stubs');
+      var items = DATA[key];
+      if (items && items.length) buildStubs(wrap, items, key);
+      else wrap.innerHTML = '<div class="todo-note">// TODO: 数据未加载（检查 data.js）</div>';
+    });
+
+    // ---------- 观演计数器：每次进入视野都重新滚动 0 → N（改 data.js 的 dramaTotal）----------
+    (function () {
+      var el = document.getElementById('drama-count');
+      if (!el) return;
+      var target = DATA.dramaTotal || 0;
+      function setFinal() { el.textContent = target; }
+      if (reduced || !('IntersectionObserver' in window)) { setFinal(); return; }
+      var ticking = false;
+      function countUp() {
+        if (ticking) return;
+        ticking = true;
+        var t0 = null, DUR = 2600;
+        function tick(ts) {
+          if (!t0) t0 = ts;
+          var p = Math.min((ts - t0) / DUR, 1);
+          var eased = 1 - Math.pow(1 - p, 4);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(tick);
+          else ticking = false;
+        }
+        requestAnimationFrame(tick);
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { el.textContent = '0'; countUp(); }
+        });
+      }, { threshold: 0.2 });
+      io.observe(el);
+    })();
+  })();
+</script>
+
+<script>
+  // ---------- 文案系统：copy.js + 浏览器暂存 + ✎ 编辑模式 + 导出 ----------
+  (function () {
+    var KEY = 'pz-copy-overrides';
+    var FILE_DEFAULTS = window.COPY || {};
+    var FILE_V = window.COPY_V || '';
+    var overrides = {};
+    try {
+      var stored = JSON.parse(localStorage.getItem(KEY) || '{}');
+      // 版本号机制：磁盘上的 copy.js 更新后，自动作废旧暂存（避免脏数据盖过新文件）
+      if (stored && stored.v === FILE_V && stored.data) overrides = stored.data;
+      else if (stored && Object.keys(stored).length) localStorage.removeItem(KEY);
+    } catch (e) {}
+    var els = Array.prototype.slice.call(document.querySelectorAll('[data-copy]'));
+    var domDefaults = {};
+
+    function effective(key) {
+      if (Object.prototype.hasOwnProperty.call(overrides, key)) return overrides[key];
+      if (Object.prototype.hasOwnProperty.call(FILE_DEFAULTS, key)) return FILE_DEFAULTS[key];
+      return domDefaults[key];
+    }
+
+    // 启动优先级：浏览器暂存 > copy.js > HTML 原文
+    els.forEach(function (el) {
+      var k = el.getAttribute('data-copy');
+      domDefaults[k] = el.innerHTML;
+      var v = effective(k);
+      if (v != null) el.innerHTML = v;
+    });
+
+    var body = document.body;
+    var statusEl = document.getElementById('edit-status');
+
+    function refreshStatus() {
+      var n = Object.keys(overrides).length;
+      statusEl.innerHTML = n
+        ? '编辑模式 · <span class="dirty">' + n + ' 处未保存</span>（已暂存浏览器）'
+        : '编辑模式：点文字直接改';
+    }
+
+    function saveOverrides() {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: FILE_V, data: overrides })); } catch (err) {}
+    }
+
+    function enterEdit() {
+      if (body.classList.contains('editing')) return;
+      body.classList.add('editing');
+      els.forEach(function (el) { el.contentEditable = 'true'; el.spellcheck = false; });
+      refreshStatus();
+    }
+
+    document.getElementById('edit-toggle').addEventListener('click', enterEdit);
+    document.getElementById('exit-edit').addEventListener('click', function () {
+      body.classList.remove('editing');
+      els.forEach(function (el) { el.contentEditable = 'false'; });
+    });
+    document.getElementById('clear-copy').addEventListener('click', function () {
+      overrides = {};
+      try { localStorage.removeItem(KEY); } catch (err) {}
+      els.forEach(function (el) {
+        var k = el.getAttribute('data-copy');
+        var v = effective(k);
+        if (v != null) el.innerHTML = v;
+      });
+      refreshStatus();
+    });
+
+    // 启动编辑器服务后带 ?edit=1 打开 → 自动进入编辑模式（参数在 hash 里也认）
+    if (/[?&]edit=1/.test(location.search + location.hash)) enterEdit();
+
+    // 编辑中点导航不跳转；输入即暂存
+    document.addEventListener('click', function (e) {
+      if (body.classList.contains('editing') && e.target.closest('.tabs a')) e.preventDefault();
+    }, true);
+    // 粘贴一律转为纯文本（防止飞书/网页富文本把垃圾标签带进来）
+    document.addEventListener('paste', function (e) {
+      var el = e.target.closest && e.target.closest('[data-copy]');
+      if (!el || !body.classList.contains('editing')) return;
+      e.preventDefault();
+      var t = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, t);
+    });
+    document.addEventListener('input', function (e) {
+      var el = e.target.closest && e.target.closest('[data-copy]');
+      if (!el || !body.classList.contains('editing')) return;
+      overrides[el.getAttribute('data-copy')] = el.innerHTML;
+      saveOverrides();
+      refreshStatus();
+    });
+
+    // 保存：在线（编辑器服务在运行时）直接写回 copy.js 并刷新；否则退回下载
+    document.getElementById('export-copy').addEventListener('click', function () {
+      var keys = Object.keys(domDefaults);
+      var ordered = Object.keys(FILE_DEFAULTS).concat(keys.filter(function (k) { return !(k in FILE_DEFAULTS); }));
+      var lines = ordered.map(function (k) {
+        var v = effective(k);
+        return v == null ? null : '  ' + JSON.stringify(k) + ': ' + JSON.stringify(v) + ',';
+      }).filter(Boolean);
+      var bodyText = lines.join('\n').replace(/,$/, '');
+      var text = '// ✏️ 网站文案（保存于 ' + new Date().toISOString().slice(0, 10) + '）\n' +
+                 'window.COPY_V = ' + JSON.stringify(FILE_V) + ';\n' +
+                 'window.COPY = {\n' + bodyText + '\n};\n';
+
+      function download() {
+        var blob = new Blob([text], { type: 'text/javascript;charset=utf-8' });
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'copy.js';
+        a.click();
+        URL.revokeObjectURL(a.href);
+        statusEl.innerHTML = '未检测到编辑器服务，已改为下载 copy.js（需手动替换）';
+      }
+
+      if (location.protocol === 'file:') return download();
+      statusEl.innerHTML = '正在保存…';
+      fetch('/api/save-copy', { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: text })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+        .then(function () {
+          overrides = {};
+          try { localStorage.removeItem(KEY); } catch (err) {}
+          statusEl.innerHTML = '已保存到 copy.js ✓ 正在刷新…';
+          setTimeout(function () { location.reload(); }, 600);
+        })
+        .catch(download);
+    });
+  })();
+</script>
+
+</body>
+</html>

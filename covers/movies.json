@@ -1,0 +1,65 @@
+[
+  {
+    "title": "天堂电影院 Nuovo Cinema Paradiso",
+    "creator": "朱塞佩·托纳多雷",
+    "year": "1988",
+    "link": "https://movie.douban.com/subject/1291828/",
+    "cover": "covers/movie-01.jpg"
+  },
+  {
+    "title": "堕落天使 墮落天使",
+    "creator": "王家卫",
+    "year": "1995",
+    "link": "https://movie.douban.com/subject/1298112/",
+    "cover": "covers/movie-02.jpg"
+  },
+  {
+    "title": "情书 Love Letter",
+    "creator": "岩井俊二",
+    "year": "1995",
+    "link": "https://movie.douban.com/subject/1292220/",
+    "cover": "covers/movie-03.jpg"
+  },
+  {
+    "title": "花样年华 花樣年華",
+    "creator": "王家卫",
+    "year": "2000",
+    "link": "https://movie.douban.com/subject/1291557/",
+    "cover": "covers/movie-04.jpg"
+  },
+  {
+    "title": "世界的主人 세계의 주인",
+    "creator": "尹佳恩",
+    "year": "2025",
+    "link": "https://movie.douban.com/subject/37116612/",
+    "cover": "covers/movie-05.jpg"
+  },
+  {
+    "title": "再次出发之纽约遇见你 Begin Again",
+    "creator": "约翰·卡尼",
+    "year": "2013",
+    "link": "https://movie.douban.com/subject/6874403/",
+    "cover": "covers/movie-06.jpg"
+  },
+  {
+    "title": "谁先爱上他的 誰先愛上他的",
+    "creator": "徐誉庭 / 许智彦",
+    "year": "2018",
+    "link": "https://movie.douban.com/subject/27119586/",
+    "cover": "covers/movie-07.jpg"
+  },
+  {
+    "title": "寻找小糖人 Searching for Sugar Man",
+    "creator": "马利克·本德杰鲁",
+    "year": "2012",
+    "link": "https://movie.douban.com/subject/7015798/",
+    "cover": "covers/movie-08.jpg"
+  },
+  {
+    "title": "流人 第二季 Slow Horses Season 2",
+    "creator": "杰里米·洛夫林",
+    "year": "2022",
+    "link": "https://movie.douban.com/subject/35356697/",
+    "cover": "covers/movie-09.jpg"
+  }
+]
