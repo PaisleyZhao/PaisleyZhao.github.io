@@ -730,9 +730,12 @@
     .topbar-inner { padding: 0 16px; gap: 10px; }
     .wordmark .en-wm { display: none; }
     .layout { grid-template-columns: minmax(0, 1fr); gap: 44px; padding: 40px 22px 80px; }
-    .sidebar { position: static; }
-    .hero { grid-template-columns: 1fr 132px; gap: 24px; }
-    .portrait { width: 132px; height: 132px; font-size: 34px; }
+    .sidebar { display: none; }              /* 移动端侧栏内容只在名片页出现 */
+    .hero { grid-template-columns: 1fr; gap: 24px; }
+    .hero-side { flex-direction: row; align-items: flex-start; gap: 14px; }
+    .hero-side .portrait { width: 118px; height: 118px; flex-shrink: 0; }
+    .hero-side .about-tags { flex: 1; }
+    .portrait { font-size: 34px; }
     .vinyl-stage { margin: 0 -22px; }
     .plank { left: -8px; right: -8px; }
     footer { padding: 24px 22px 56px; }
@@ -859,6 +862,15 @@
   .proj:hover .proj-arrow { transform: translateX(4px); }
   .proj-sub { display: block; padding: 3px 14px 14px; font-size: 12.5px; color: var(--muted); }
 
+  /* ---------- me 名片页（点名字进入） ---------- */
+  .me-card h1 { font-size: 20px; font-weight: 600; letter-spacing: 0.01em; color: var(--ink); line-height: 1.35; }
+  .me-card .en-name { font-family: var(--mono); font-size: 12px; letter-spacing: 0.02em; color: var(--muted); margin: 4px 0 16px; }
+  .me-card .affil { font-size: 13px; color: var(--muted); line-height: 1.9; margin-bottom: 22px; }
+  .me-card .keywords { margin-bottom: 24px; }
+  .me-card .contact { font-size: 13px; }
+  body[data-page="me"] .sidebar { display: none; }
+  body[data-page="me"] .layout { grid-template-columns: minmax(0, 37.5rem); }
+
   /* ---------- hero 右栏：头像 + 关于我标签 ---------- */
   .hero-side { display: flex; flex-direction: column; gap: 14px; }
   .about-tags { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
@@ -899,7 +911,7 @@
 <!-- ============ 顶部导航 ============ -->
 <header class="topbar">
   <div class="topbar-inner">
-    <a class="wordmark" href="#/about">
+    <a class="wordmark" href="#/me">
       <span class="zh">赵珮伊</span>
       <span class="en-wm">PEIYI ZHAO</span>
       <span class="pixel-cluster" aria-hidden="true"><i class="lit"></i><i></i><i class="dim"></i><i class="empty"></i></span>
@@ -958,8 +970,45 @@
   <!-- ============ 板块页 ============ -->
   <main>
 
+    <!-- ════════════ 板块零：名片（点名字进入；移动端替代侧栏） ════════════ -->
+    <div class="page" id="page-me" data-page="me">
+      <div class="me-card develop">
+        <div class="portrait" style="background: url('assets/avatar.jpg') center/cover; margin-bottom: 22px;" role="img" aria-label="赵珮伊照片"></div>
+        <h1>赵珮伊</h1>
+        <div class="en-name">Peiyi (Paisley) Zhao</div>
+        <div class="affil">
+          复旦大学-伦敦政治经济学院（LSE）<br>
+          全球媒介与传播双学位 2026 级硕士生<br>
+          CSC 国际组织后备人才培养项目学员
+        </div>
+        <div class="keywords">
+          <span>智能传播</span>
+          <span>数字包容</span>
+          <span>国际传播</span>
+          <span>体育传播</span>
+        </div>
+        <div class="contact">
+          <div class="row">
+            <span class="k">Contact</span>
+            <span class="v icon-links">
+              <a href="mailto:puiyee_jessica@foxmail.com" title="puiyee_jessica@foxmail.com" aria-label="Email"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+              <a href="https://www.linkedin.com/in/peiyi-zhao-85b6a138b/" title="LinkedIn" aria-label="LinkedIn"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+            </span>
+          </div>
+          <div class="row">
+            <span class="k">Base</span>
+            <span class="v">🇨🇳 北京 · 上海　🇬🇧 伦敦　🇺🇳 待定</span>
+          </div>
+          <div class="row">
+            <span class="k">Skills</span>
+            <span class="v">AI Native · 跨文化交流 · 用户洞察 · 数据分析</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- ════════════ 板块一：关于我 ════════════ -->
-    <div class="page current" id="page-about" data-page="about">
+    <div class="page" id="page-about" data-page="about">
 
       <!-- hero：自我介绍 + 头像（cali 首页构图：文左图右） -->
       <div class="hero develop" style="--d:120ms">
@@ -1327,15 +1376,17 @@
 
   // ---------- Tab 分区导航（hash 路由）----------
   (function () {
-    var PAGES = ['about', 'academic', 'work', 'moments'];
+    var PAGES = ['me', 'about', 'academic', 'work', 'moments'];
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     function currentFromHash() {
       var m = location.hash.match(/^#\/(\w+)/);
-      return (m && PAGES.indexOf(m[1]) !== -1) ? m[1] : 'about';
+      if (m && PAGES.indexOf(m[1]) !== -1) return m[1];
+      return window.matchMedia('(max-width: 820px)').matches ? 'me' : 'about';
     }
 
     function show(name, animate) {
+      document.body.setAttribute('data-page', name);
       PAGES.forEach(function (p) {
         var el = document.getElementById('page-' + p);
         var on = p === name;
@@ -1356,7 +1407,10 @@
     }
 
     window.addEventListener('hashchange', function () { show(currentFromHash(), true); });
-    if (!location.hash) history.replaceState(null, '', '#/about');
+    if (!location.hash) {
+      var def = window.matchMedia('(max-width: 820px)').matches ? 'me' : 'about';
+      history.replaceState(null, '', '#/' + def);
+    }
     show(currentFromHash(), false);
   })();
 
