@@ -693,39 +693,6 @@
   }
   footer .mono { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
 
-  /* ---------- 文案编辑模式 ---------- */
-  body.editing [data-copy] {
-    outline: 1px dashed var(--hairline-strong);
-    outline-offset: 3px;
-    border-radius: 2px;
-    cursor: text;
-    transition: outline-color 150ms ease;
-  }
-  body.editing [data-copy]:hover { outline-color: var(--ink); }
-  body.editing [data-copy]:focus { outline: 1px solid var(--ink); }
-  .editbar {
-    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
-    z-index: 300;
-    display: none;
-    align-items: center; gap: 10px;
-    background: var(--paper);
-    box-shadow: 0 0 0 1px var(--hairline), var(--shadow-medium);
-    border-radius: 999px;
-    padding: 6px 8px 6px 14px;
-    font-family: var(--mono); font-size: 11px; color: var(--muted);
-    white-space: nowrap;
-  }
-  body.editing .editbar { display: flex; }
-  .editbar .dirty { color: var(--signal); }   /* 编辑条上允许的一点点 signal */
-  .editbar button {
-    appearance: none; border: 0; cursor: pointer;
-    font-family: var(--mono); font-size: 11px;
-    border-radius: 999px; padding: 5px 12px;
-    background: var(--ink); color: var(--paper);
-  }
-  .editbar button.ghost { background: transparent; color: var(--muted); box-shadow: 0 0 0 1px var(--hairline-strong); }
-  .editbar button.ghost:hover { color: var(--ink); }
-
   @media (max-width: 820px) {
     .topbar-inner { padding: 0 16px; gap: 10px; }
     .wordmark .en-wm { display: none; }
@@ -904,6 +871,41 @@
     color: var(--faint); font-weight: 700;
   }
   ul.sub li strong { color: var(--body); font-weight: 500; }
+
+  /* ---------- 移动端底部 Tab 栏 ---------- */
+  .mobile-tabs { display: none; }
+  @media (max-width: 820px) {
+    .tabs { display: none; }
+    .mobile-tabs {
+      display: flex; justify-content: space-around; align-items: center;
+      position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%);
+      z-index: 200;
+      width: min(92vw, 400px);
+      background: var(--paper);
+      box-shadow: 0 0 0 1px var(--hairline), var(--shadow-medium);
+      border-radius: 999px;
+      padding: 6px 4px;
+    }
+    .mobile-tabs a {
+      display: flex; flex-direction: column; align-items: center; gap: 2px;
+      text-decoration: none; color: var(--muted);
+      font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.04em;
+      padding: 4px 10px; border-radius: 999px;
+      transition: color 150ms ease, background 150ms ease;
+    }
+    .mobile-tabs a svg { width: 19px; height: 19px; }
+    .mobile-tabs a.active { color: var(--ink); background: var(--surface); box-shadow: 0 0 0 1px var(--hairline); }
+    body { padding-bottom: 64px; }
+    /* me 名片页：居中名片 */
+    .me-card { text-align: center; padding-top: 12px; }
+    .me-card .portrait { margin: 0 auto 20px !important; width: 148px; height: 148px; }
+    .me-card .keywords { display: flex; flex-wrap: wrap; justify-content: center; }
+    .me-card .contact { display: inline-block; text-align: left; }
+    /* about：移动端照片撤下，标签独占一行居中 */
+    .hero-side .portrait { display: none; }
+    .hero-side .about-tags { justify-content: center; }
+    .hero-side .about-tags .at-label { text-align: center; }
+  }
 </style>
 </head>
 <body>
@@ -922,7 +924,6 @@
       <a href="#/work" data-tab="work"><span data-copy="tab.work">实践经历</span><span class="en">Work</span></a>
       <a href="#/moments" data-tab="moments"><span data-copy="tab.moments">人生瞬间</span><span class="en" data-copy="tag.moments.1.en">Moments</span></a>
     </nav>
-    <button class="theme-btn" id="edit-toggle" type="button" aria-label="编辑文案模式">✎</button>
     <button class="theme-btn" id="theme-toggle" type="button" aria-label="切换深色模式">◐</button>
   </div>
 </header>
@@ -1203,7 +1204,7 @@
       </section>
 
       <section class="blk">
-        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.work.2">项目与作品</span><span class="en" data-copy="tag.work.2.en">Selected Work</span><span class="rule"></span></div>
+        <div class="section-tag" aria-hidden="true"><span class="num">02</span><span class="hatch"></span><span class="label" data-copy="tag.work.2">项目与作品</span><span class="en" data-copy="tag.work.2.en">PROJECTS</span><span class="rule"></span></div>
         <ul class="proj-grid">
           <li>
             <a class="proj" href="https://github.com/dingdinglz/alcheme">
@@ -1337,13 +1338,29 @@
   </main>
 </div>
 
-<!-- 编辑模式浮条 -->
-<div class="editbar" id="editbar">
-  <span id="edit-status">编辑模式：点文字直接改</span>
-  <button type="button" id="export-copy">保存 ✓</button>
-  <button type="button" class="ghost" id="clear-copy">清除暂存</button>
-  <button type="button" class="ghost" id="exit-edit">退出</button>
-</div>
+<!-- 移动端底部 Tab 栏 -->
+<nav class="mobile-tabs" aria-label="移动端板块导航">
+  <a href="#/me" data-tab="me" aria-label="名片">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c1.4-3.2 4-4.6 7-4.6s5.6 1.4 7 4.6"/></svg>
+    <span>名片</span>
+  </a>
+  <a href="#/about" data-tab="about" aria-label="关于我">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 6h16v11H8l-4 3V6z"/><path d="M8 10h8M8 13h5"/></svg>
+    <span>关于我</span>
+  </a>
+  <a href="#/academic" data-tab="academic" aria-label="学术经历">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M4 19V5a1 1 0 0 1 1-1h14v14H5a1 1 0 0 0-1 1zm0 0a1 1 0 0 0 1 1h14"/><path d="M8 8h8"/></svg>
+    <span>学术</span>
+  </a>
+  <a href="#/work" data-tab="work" aria-label="实践经历">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="8" width="18" height="11" rx="2"/><path d="M9 8V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/></svg>
+    <span>实践</span>
+  </a>
+  <a href="#/moments" data-tab="moments" aria-label="人生瞬间">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.4"/><path d="M8 6l1.2-2h5.6L16 6"/></svg>
+    <span>瞬间</span>
+  </a>
+</nav>
 
 <footer>
   <div class="colophon">
@@ -1352,7 +1369,6 @@
   </div>
 </footer>
 
-<script src="copy.js"></script>
 <script src="data.js"></script>
 <script>
   // ---------- 主题 ----------
@@ -1393,7 +1409,7 @@
         el.classList.toggle('current', on);
         el.classList.remove('enter');
       });
-      document.querySelectorAll('.tabs a').forEach(function (a) {
+      document.querySelectorAll('a[data-tab]').forEach(function (a) {
         a.classList.toggle('active', a.getAttribute('data-tab') === name);
         if (a.getAttribute('data-tab') === name) a.setAttribute('aria-current', 'page');
         else a.removeAttribute('aria-current');
@@ -1661,133 +1677,7 @@
   })();
 </script>
 
-<script>
-  // ---------- 文案系统：copy.js + 浏览器暂存 + ✎ 编辑模式 + 导出 ----------
-  (function () {
-    var KEY = 'pz-copy-overrides';
-    var FILE_DEFAULTS = window.COPY || {};
-    var FILE_V = window.COPY_V || '';
-    var overrides = {};
-    try {
-      var stored = JSON.parse(localStorage.getItem(KEY) || '{}');
-      // 版本号机制：磁盘上的 copy.js 更新后，自动作废旧暂存（避免脏数据盖过新文件）
-      if (stored && stored.v === FILE_V && stored.data) overrides = stored.data;
-      else if (stored && Object.keys(stored).length) localStorage.removeItem(KEY);
-    } catch (e) {}
-    var els = Array.prototype.slice.call(document.querySelectorAll('[data-copy]'));
-    var domDefaults = {};
 
-    function effective(key) {
-      if (Object.prototype.hasOwnProperty.call(overrides, key)) return overrides[key];
-      if (Object.prototype.hasOwnProperty.call(FILE_DEFAULTS, key)) return FILE_DEFAULTS[key];
-      return domDefaults[key];
-    }
-
-    // 启动优先级：浏览器暂存 > copy.js > HTML 原文
-    els.forEach(function (el) {
-      var k = el.getAttribute('data-copy');
-      domDefaults[k] = el.innerHTML;
-      var v = effective(k);
-      if (v != null) el.innerHTML = v;
-    });
-
-    var body = document.body;
-    var statusEl = document.getElementById('edit-status');
-
-    function refreshStatus() {
-      var n = Object.keys(overrides).length;
-      statusEl.innerHTML = n
-        ? '编辑模式 · <span class="dirty">' + n + ' 处未保存</span>（已暂存浏览器）'
-        : '编辑模式：点文字直接改';
-    }
-
-    function saveOverrides() {
-      try { localStorage.setItem(KEY, JSON.stringify({ v: FILE_V, data: overrides })); } catch (err) {}
-    }
-
-    function enterEdit() {
-      if (body.classList.contains('editing')) return;
-      body.classList.add('editing');
-      els.forEach(function (el) { el.contentEditable = 'true'; el.spellcheck = false; });
-      refreshStatus();
-    }
-
-    document.getElementById('edit-toggle').addEventListener('click', enterEdit);
-    document.getElementById('exit-edit').addEventListener('click', function () {
-      body.classList.remove('editing');
-      els.forEach(function (el) { el.contentEditable = 'false'; });
-    });
-    document.getElementById('clear-copy').addEventListener('click', function () {
-      overrides = {};
-      try { localStorage.removeItem(KEY); } catch (err) {}
-      els.forEach(function (el) {
-        var k = el.getAttribute('data-copy');
-        var v = effective(k);
-        if (v != null) el.innerHTML = v;
-      });
-      refreshStatus();
-    });
-
-    // 启动编辑器服务后带 ?edit=1 打开 → 自动进入编辑模式（参数在 hash 里也认）
-    if (/[?&]edit=1/.test(location.search + location.hash)) enterEdit();
-
-    // 编辑中点导航不跳转；输入即暂存
-    document.addEventListener('click', function (e) {
-      if (body.classList.contains('editing') && e.target.closest('.tabs a')) e.preventDefault();
-    }, true);
-    // 粘贴一律转为纯文本（防止飞书/网页富文本把垃圾标签带进来）
-    document.addEventListener('paste', function (e) {
-      var el = e.target.closest && e.target.closest('[data-copy]');
-      if (!el || !body.classList.contains('editing')) return;
-      e.preventDefault();
-      var t = (e.clipboardData || window.clipboardData).getData('text/plain');
-      document.execCommand('insertText', false, t);
-    });
-    document.addEventListener('input', function (e) {
-      var el = e.target.closest && e.target.closest('[data-copy]');
-      if (!el || !body.classList.contains('editing')) return;
-      overrides[el.getAttribute('data-copy')] = el.innerHTML;
-      saveOverrides();
-      refreshStatus();
-    });
-
-    // 保存：在线（编辑器服务在运行时）直接写回 copy.js 并刷新；否则退回下载
-    document.getElementById('export-copy').addEventListener('click', function () {
-      var keys = Object.keys(domDefaults);
-      var ordered = Object.keys(FILE_DEFAULTS).concat(keys.filter(function (k) { return !(k in FILE_DEFAULTS); }));
-      var lines = ordered.map(function (k) {
-        var v = effective(k);
-        return v == null ? null : '  ' + JSON.stringify(k) + ': ' + JSON.stringify(v) + ',';
-      }).filter(Boolean);
-      var bodyText = lines.join('\n').replace(/,$/, '');
-      var text = '// ✏️ 网站文案（保存于 ' + new Date().toISOString().slice(0, 10) + '）\n' +
-                 'window.COPY_V = ' + JSON.stringify(FILE_V) + ';\n' +
-                 'window.COPY = {\n' + bodyText + '\n};\n';
-
-      function download() {
-        var blob = new Blob([text], { type: 'text/javascript;charset=utf-8' });
-        var a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'copy.js';
-        a.click();
-        URL.revokeObjectURL(a.href);
-        statusEl.innerHTML = '未检测到编辑器服务，已改为下载 copy.js（需手动替换）';
-      }
-
-      if (location.protocol === 'file:') return download();
-      statusEl.innerHTML = '正在保存…';
-      fetch('/api/save-copy', { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: text })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
-        .then(function () {
-          overrides = {};
-          try { localStorage.removeItem(KEY); } catch (err) {}
-          statusEl.innerHTML = '已保存到 copy.js ✓ 正在刷新…';
-          setTimeout(function () { location.reload(); }, 600);
-        })
-        .catch(download);
-    });
-  })();
-</script>
 
 </body>
 </html>
