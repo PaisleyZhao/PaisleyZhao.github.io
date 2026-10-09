@@ -1,5 +1,6 @@
 import { execFileSync } from 'node:child_process';
-import { cp, mkdir, writeFile, lstat } from 'node:fs/promises';
+import { cp, mkdir, writeFile, readFile, lstat } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
@@ -33,5 +34,20 @@ for (const file of publicFiles) {
 }
 await mkdir(path.join(output, 'en'), { recursive: true });
 await cp(path.join(root, 'en', 'index.html'), path.join(output, 'en', 'index.html'));
+// New content gets a new URL, so both entries avoid stale browser script caches.
+const versions = {};
+for (const name of ['copy.js', 'data.js']) {
+  versions[name] = createHash('sha256').update(await readFile(path.join(output, name))).digest('hex').slice(0,12);
+}
+for (const file of ['index.html', 'en/index.html']) {
+  const target = path.join(output, file);
+  let html = await readFile(target, 'utf8');
+  for (const [name, version] of Object.entries(versions)) {
+    const marker = `src="${name}"`;
+    if (html.split(marker).length !== 2) throw new Error(`Expected one ${name} reference in ${file}`);
+    html = html.replace(marker, `src="${name}?v=${version}"`);
+  }
+  await writeFile(target, html);
+}
 await writeFile(path.join(output, '.nojekyll'), '');
 console.log(`Prepared ${publicFiles.length + 1} website files. Both entries share copy.js and data.js.`);
